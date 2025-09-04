@@ -105,36 +105,3 @@ footer{ margin-top:30px; text-align:center; padding:18px; color:var(--muted); }
 }
 
 .min-scroll{ max-height: 240px; overflow:auto; }
-
-/* === Badges de horário === */
-.badge-hora-bebe {
-  background: linear-gradient(135deg, #a7d8f9, #89cff0); /* azul bebê */
-  color: #0e0e10;
-}
-
-.badge-hora-laranja {
-  background: linear-gradient(135deg, #ffd28a, #ffa64d); /* laranja claro */
-  color: #111;
-}
-
-.badge-hora-azulescuro {
-  background: linear-gradient(135deg, #2a3d8f, #152060); /* azul escuro */
-  color: #fff;
-}
-
-.badge-hora-roxo {
-  background: linear-gradient(135deg, #7a3ea1, #53208e); /* roxo */
-  color: #fff;
-}
-
-/* Ícone de lixeira minimalista */
-.icon-trash {
-  cursor: pointer;
-  color: #e63946; /* vermelho */
-  font-size: 18px;
-  transition: transform 0.2s ease;
-}
-.icon-trash:hover {
-  transform: scale(1.2);
-}
-
