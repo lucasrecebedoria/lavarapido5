@@ -1,0 +1,140 @@
+/* Global theme (dark metallic) */
+:root{
+  --bg: #0b0b0c;
+  --bg-grad-top:#121214;
+  --bg-grad-bot:#1f1f22;
+  --metal-green:#2dbb71;
+  --text:#e7e7ea;
+  --muted:#a8a8b3;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 800px at 80% -10%, #2d2d30 0%, transparent 60%),
+    linear-gradient(180deg,var(--bg-grad-top),var(--bg-grad-bot));
+  font-family: Inter, Roboto, "Segoe UI", Arial;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Layout */
+.container{ max-width:1100px; margin:0 auto; padding:20px; }
+.header{ display:flex; align-items:center; gap:12px; padding:12px 18px; position:sticky; top:0; background:linear-gradient(180deg,#0e1012cc,#0b0b0ccc); z-index:20; border-bottom:1px solid #202124; }
+.header .left, .header .right{ display:flex; align-items:center; gap:8px; }
+.logo{ height:42px; }
+.spacer{ flex:1; }
+
+.card{ background: linear-gradient(180deg, #191a1d, #101114); border-radius:14px; padding:14px; border:1px solid #232427; box-shadow: 0 12px 30px rgba(0,0,0,.5); margin-bottom:16px; }
+
+/* Buttons & metal look */
+.metal{ background: linear-gradient(135deg, #35383f, #1e2025 40%, #2b2e34 60%, #17191d); border:1px solid #3b3e46; border-radius:10px; padding:8px 12px; color:var(--text); cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:8px; }
+.metal:hover{ transform:translateY(-2px); box-shadow: 0 18px 40px rgba(0,0,0,.6); }
+
+.badge{ display:inline-flex; align-items:center; justify-content:center; padding:6px 10px; border-radius:6px; font-weight:600; font-size:12px; min-width:64px; text-align:center; }
+.badge-silver{ background: linear-gradient(135deg, #7f858c, #5b6066); color:#0e0e10; }
+.badge-yellow{ background: linear-gradient(135deg,#f2c94c,#d4a80b); color:#111; }
+.badge-lightgreen{ background: linear-gradient(135deg,#99e1b1,#5bc286); color:#05110a; }
+.badge-pink{ background: linear-gradient(135deg,#f09ac6,#c55f9f); color:#111; }
+
+/* Prefix background badges (in-line with prefix) */
+.prefix-badge{ display:inline-block; padding:6px 10px; border-radius:6px; font-weight:700; color:#fff; min-width:86px; text-align:center; }
+.prefix-green-flag{ background: linear-gradient(135deg,#1b8f3d,#11602a); }
+.prefix-red{ background: linear-gradient(135deg,#8f1b1b,#601111); }
+.prefix-blue{ background: linear-gradient(135deg,#1b3e8f,#112860); }
+.prefix-purple{ background: linear-gradient(135deg,#53208e,#381562); }
+.prefix-default{ background: linear-gradient(135deg,#2b2f33,#141517); color:#cfcfd2; }
+
+/* Forms */
+.form{ display:grid; gap:12px; }
+.row{ display:grid; grid-template-columns: repeat(12, 1fr); gap:10px; }
+.col-3{ grid-column: span 3; }
+.col-4{ grid-column: span 4; }
+.col-6{ grid-column: span 6; }
+.col-8{ grid-column: span 8; }
+.col-12{ grid-column: span 12; }
+
+.label{ font-size:13px; color:var(--muted); margin-bottom:6px; }
+.input, select{ width:100%; padding:10px; border-radius:10px; border:1px solid #222428; background:#0f1012; color:var(--text); outline:none; }
+
+.input-prefix{ display:flex; border-radius:10px; overflow:hidden; border:1px solid #222428; }
+.input-prefix span{ background: linear-gradient(135deg,#2dbb71,#1f8a58); padding:10px 12px; font-weight:700; color:#07110a; }
+.input-prefix input{ background:transparent; border:0; padding:10px; color:var(--text); flex:1; }
+
+.table{ width:100%; border-collapse:collapse; }
+.table th, .table td{ text-align:left; padding:10px; border-bottom:1px solid #24262b; }
+.table thead{ background: linear-gradient(180deg,#151618,#0f1012); }
+
+.small{ font-size:13px; color:var(--muted); }
+
+/* Panel <2 lavagens */
+#painelMenos2 .min-scroll{ max-height:260px; overflow:auto; padding-right:6px; }
+
+/* Monthly highlight low counts */
+.row-low { color:#ffdddd; background: linear-gradient(90deg, rgba(120,20,20,0.08), transparent); font-weight:700; border-left:4px solid rgba(210,70,70,0.9); }
+
+footer{ margin-top:30px; text-align:center; padding:18px; color:var(--muted); }
+
+
+/* --- Added styles --- */
+.icon-btn{
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+.icon-btn:active { transform: scale(0.98); }
+
+.trash-btn{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  color: #c62828; /* red */
+}
+.trash-btn:hover{ opacity: 0.8; }
+
+.btn-outline{
+  background: transparent;
+  border: 1px dashed #999;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.min-scroll{ max-height: 240px; overflow:auto; }
+
+/* === Badges de horário === */
+.badge-hora-bebe {
+  background: linear-gradient(135deg, #a7d8f9, #89cff0); /* azul bebê */
+  color: #0e0e10;
+}
+
+.badge-hora-laranja {
+  background: linear-gradient(135deg, #ffd28a, #ffa64d); /* laranja claro */
+  color: #111;
+}
+
+.badge-hora-azulescuro {
+  background: linear-gradient(135deg, #2a3d8f, #152060); /* azul escuro */
+  color: #fff;
+}
+
+.badge-hora-roxo {
+  background: linear-gradient(135deg, #7a3ea1, #53208e); /* roxo */
+  color: #fff;
+}
+
+/* Ícone de lixeira minimalista */
+.icon-trash {
+  cursor: pointer;
+  color: #e63946; /* vermelho */
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+.icon-trash:hover {
+  transform: scale(1.2);
+}
+

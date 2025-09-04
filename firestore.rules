@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /usuarios/{uid} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow update, delete: if request.auth != null && (request.auth.token.email.matches('^(12|6266|1778)@movebuss.local$'));
+    }
+
+    match /relatorios/{docId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow update, delete: if request.auth != null && (request.auth.token.email.matches('^(12|6266|1778)@movebuss.local$'));
+    }
+
+    match /relatorios_mensais/{docId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow update, delete: if request.auth != null && (request.auth.token.email.matches('^(12|6266|1778)@movebuss.local$'));
+    }
+  }
+}

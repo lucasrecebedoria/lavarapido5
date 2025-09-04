@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MoveBuss • Registrar</title>
+<link rel="icon" href="./assets/favicon.ico" />
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="left">
+      <img src="./assets/logo.png" class="logo" alt="logo"/>
+      <h3 class="small">Registrar usuário</h3>
+    </div>
+    <div class="spacer"></div>
+    <div class="right"><a href="./index.html" class="metal">Voltar</a></div>
+  </header>
+
+  <main class="container" style="max-width:700px; margin-top:24px;">
+    <div class="card">
+      <form id="regForm" class="form">
+        <div class="row">
+          <div class="col-6">
+            <div class="label">Matrícula</div>
+            <input id="matricula" class="input" placeholder="Ex.: 12, 6266, 1778, 55001" required/>
+          </div>
+          <div class="col-6">
+            <div class="label">Nome</div>
+            <input id="nome" class="input" required/>
+          </div>
+          <div class="col-12">
+            <div class="label">Senha</div>
+            <input id="senha" class="input" type="password" required/>
+          </div>
+        </div>
+        <button class="metal" type="submit">Criar conta</button>
+      </form>
+      <p id="msg" class="small" style="margin-top:10px;color:#89d9a8"></p>
+    </div>
+  </main>
+
+  <footer>Developed by Lucas L Custodio, V1</footer>
+
+<script type="module">
+import { auth, db, colUsuarios, createUserWithEmailAndPassword, setDoc, doc } from './firebase.js';
+const ADMINS = new Set(['12','6266','1778']);
+
+document.getElementById('regForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const matricula = document.getElementById('matricula').value.trim();
+  const nome = document.getElementById('nome').value.trim();
+  const senha = document.getElementById('senha').value;
+  const email = `${matricula}@movebuss.local`;
+  const isAdmin = ADMINS.has(matricula);
+  try{
+    const res = await createUserWithEmailAndPassword(auth, email, senha);
+    // Save to Firestore using uid document id
+    await setDoc(doc(colUsuarios, res.user.uid), { uid: res.user.uid, matricula, nome, email, isAdmin, criado_em: new Date().toISOString() });
+    document.getElementById('msg').textContent = `Usuário criado: ${email}`;
+  }catch(err){
+    document.getElementById('msg').textContent = err.message;
+  }
+});
+</script>
+</body>
+</html>

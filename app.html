@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lava Rápido</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+  <header>
+    <button id="btnLogout">Sair</button>
+    <button id="btnChangePwd">Alterar Senha</button>
+  </header>
+
+  <main>
+    <h2>Relatório Semanal</h2>
+    <div>
+      <input type="text" id="filtroPrefixo" placeholder="Filtrar prefixo">
+      <input type="number" id="filtroMinCount" placeholder="Mínimo de lavagens">
+      <button id="btnWeeklyPdf">Salvar em PDF</button>
+      <button id="btnWeeklyExcel">Salvar em Excel</button>
+    </div>
+
+    <table id="tabelaSemanal" border="1">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Hora</th>
+          <th>Prefixo</th>
+          <th>Tipo</th>
+          <th>Usuário</th>
+          <th class="admin-col">Ação</th> <!-- Lixeira aparece só para admins -->
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h3>Menos de 2 lavagens</h3>
+    <button id="toggleMenos2">▾</button>
+    <input type="text" id="filtroMenos2" placeholder="Filtrar prefixo">
+    <div id="painelScroll">
+      <table id="tabelaMenos2" border="1">
+        <thead>
+          <tr>
+            <th>Prefixo</th>
+            <th>Qtd</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <h3>Relatório Mensal</h3>
+    <div>
+      <span>Lavagem Simples: <b id="cntSimples">0</b></span>
+      <span>Higienização: <b id="cntHig">0</b></span>
+      <span>Exceções: <b id="cntExc">0</b></span>
+    </div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MoveBuss • Relatório Mensal</title>
+<link rel="icon" href="./assets/favicon.ico" />
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="left">
+      <a href="./app.html" class="metal">← Voltar</a>
+      <button id="btnLogout" class="metal">Logout</button>
+    </div>
+    <div class="spacer"></div>
+    <div class="right"><img src="./assets/logo.png" class="logo" alt="logo"/></div>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <div id="mensalFilters" class="row" style="gap:10px;align-items:end;margin-bottom:8px">
+        <div class="col-6">
+          <div class="label">Filtrar por prefixo</div>
+          <input type="text" id="filtroMensalPrefixo" class="input" placeholder="Ex.: 558, 55... ou parte do prefixo" />
+        </div>
+        <div class="col-3">
+          <div class="label">Mín. lavagens</div>
+          <input type="number" min="0" id="filtroMensalMinCount" class="input" placeholder="0" />
+        </div>
+        <div class="col-3">
+          <div class="label">Mês</div>
+          <input id="mesInput" class="input" type="month" />
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <h3 style="margin:0">Relatório Mensal</h3>
+        <div class="btn-group">
+          <button id="btnMonthlyPdf" class="metal">Salvar em PDF</button>
+          <button id="btnMonthlyExcel" class="metal">Baixar em Excel</button>
+        </div>
+      </div>
+      <h3 style="margin-top:0"></h3>
+      
+      <table class="table" id="tabelaMensal">
+        <thead><tr><th>Prefixo</th><th>Qtd lavagens</th><th>Dias</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>Developed by Lucas L Custodio, V1</footer>
+  <script type="module" src="./monthly.js"></script>
+
+  <!-- Export libs -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+</body>
+</html>

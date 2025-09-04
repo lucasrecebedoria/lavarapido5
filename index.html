@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MoveBuss • Login</title>
+<link rel="icon" href="./assets/favicon.ico" />
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="left">
+      <img src="./assets/logo.png" class="logo" alt="MoveBuss"/>
+      <h3 class="small">Controle de Lavagem</h3>
+    </div>
+    <div class="spacer"></div>
+  </header>
+
+  <main class="container" style="max-width:520px; margin-top:40px;">
+    <div class="card">
+      <h2 class="center">Acesso</h2>
+      <form id="loginForm" class="form">
+        <div>
+          <div class="label">Matrícula</div>
+          <input id="matricula" class="input" required placeholder="Ex.: 55 001 ou 6266"/>
+        </div>
+        <div>
+          <div class="label">Senha</div>
+          <input id="senha" class="input" type="password" required />
+        </div>
+        <button class="metal" style="width:100%" type="submit">Entrar</button>
+      </form>
+      <p class="small" style="margin-top:10px">Não tem conta? <a class="small link" href="./register.html">Registrar</a></p>
+      <p class="small" id="msg" style="color:#ff9b9b"></p>
+    </div>
+  </main>
+
+  <footer>Developed by Lucas L Custodio, V1</footer>
+
+<script type="module">
+import { auth, signInWithEmailAndPassword } from './firebase.js';
+
+const form = document.getElementById('loginForm');
+const msg = document.getElementById('msg');
+form.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  msg.textContent='';
+  const matricula = document.getElementById('matricula').value.trim();
+  const senha = document.getElementById('senha').value;
+  const email = `${matricula}@movebuss.local`;
+  try{
+    await signInWithEmailAndPassword(auth, email, senha);
+    location.href='app.html';
+  }catch(err){
+    msg.textContent = err.message;
+  }
+});
+</script>
+</body>
+</html>
